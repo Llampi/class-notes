@@ -1,0 +1,396 @@
+{{ block title }}Introduction{{ endblock }}
+{{ block content }}
+<link href="https://kineticgraphs.org/css/kg.0.2.6.css" rel="stylesheet" type="text/css">
+<script src="https://kineticgraphs.org/js/kg.0.2.6.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!--hay 3 tipos de respuestas: boolean, numeros, -->    
+The left-hand side of the inequality is the cost of acquiring a specific bundle; and the right-hand side is just the income. The inequality states that the person can not acquire bundles that cost more money than her income!
+<br>
+<br>
+The budget line
+<br><br>
+P<sub>1</sub> x<sub>1</sub>+ P<sub>2</sub> x<sub>2</sub>
+
+
+<br><br>
+includes all bundles (x <sub>1</sub> , x <sub>2</sub> ) that are just affordable.
+The next picture illustrates the budget restriction.
+<br><br>
+PICTURE
+<iframe src="https://www.econgraphs.org/graphs/consumer/budget/budget_set?embed=true&textbook=varian" 
+    style="border:0px #FFFFFF none;" name="myiFrame" scrolling="auto" frameborder="0" marginheight="0px" marginwidth="0px" 
+    height="500px" width="700px">
+</iframe>
+<br><br>
+Questions:
+<br>
+
+
+
+  <br><br>
+  <div id="cuestionario1"></div>
+
+
+  <br><br>
+Let us study how different taxes affect the budget set. We will study two types of taxes: sale tax and income tax. These taxes affect different parts of the budget line and, consequently, the budget set.
+<br><br>
+The sale tax is a per-unit tax imposed on the consumption of either good 1 or good 2. For example, if a per-unit tax of t dollars is imposed on good 1, then the consumer pays
+<br><br>
+t + p<sub>i</sub>
+<br><br>
+per unit of good 1 that she acquires. After the tax the budget set is
+<br><br>
+(p <sub>1</sub> + t) x  <sub>1</sub> + p <sub>2</sub>  x <sub>2</sub>  ≤ m.
+<br><br>
+The next picture illustrates the budget restriction after the sale tax.
+<br><br>
+PICTURE.
+<br><br>
+The income tax is an amount of money that the consumer has to give to the government. For example, if an income tax T is introduced, the effective income of the person reduces to
+<br><br>
+m-T
+<br><br>
+After the tax the budget set is
+<br><br>
+p <sub>1</sub> x <sub>1</sub> + p <sub>1</sub> x <sub>2</sub> ≤ m - T.
+<br><br>
+The next picture illustrates the budget restriction after the income tax.
+<br><br>
+PICTURE.
+<br><br>
+
+
+Questions:
+<br><br>
+Let p <sub>1</sub> = 2, p <sub>2</sub> = 4, and m = 100. The government introduces a sale tax of t = 1 dollar on good 2.
+<br><br>
+
+Also PICTURE for Answers!
+<br><br>
+<div id="cuestionario2"></div>
+<!--
+1. What is highest amount that the person can buy of good 1?
+2. What is highest amount than the person can buy of good 2?
+3. What is the cost of bundle(5,10)?
+4. Is bundle (5,10) affordable?
+5. What is the cost of bundle(40,10)?
+6. Is bundle (40,10) affordable?
+7. Suppose the person is consuming a bundle that that exhausts her income. If she reduces the consumption of good 2 in one unit, how many more units can the person acquire of good 2?
+
+8. What is the slope of the budget line?
+-->
+<br><br>
+Questions:
+<br><br>
+Let p <sub>1</sub> = 2, p <sub>2</sub> = 4, and m = 100. The government introduces an income tax of T = 20 dollars.
+Also PICTURE for Answers!
+<br><br>
+
+
+Also PICTURE for Answers!
+<br><br>
+<div id="cuestionario3"></div>
+<!--
+1. What is highest amount that the person can buy of good 1?
+2. What is highest amount that the person can buy of good 2?
+3. What is the cost of bundle (5, 10)?
+4. Is bundle (5, 10) affordable?
+5. What is the cost of bundle (40, 10)?
+6. Is bundle (40, 10) affordable?
+7. Suppose the person is consuming a bundle that that exhausts her income. If she reduces the consumption of good 2 in one unit, how many more units can the person acquire of good 2?
+8. What is the slope of the budget line?
+
+-->
+
+    {{ next_button }}
+
+    <script>
+        function enviar_al_server()
+        {  
+            console.log("enviar");
+            liveSend(99);
+        }
+
+        function liveRecv(data){
+            console.log(data);
+        }
+
+        //preguntas y respuestas
+        var preguntasRespuestas = {
+            pregunta1: {
+                identificador: "1",
+                pregunta: "What is highest amount that the person can buy of good 1?",
+                respuesta: "50",
+                mensaje_respuesta: "m/p1 = 100/2 = 50"
+            },
+            pregunta2: {
+                identificador: "2",
+                pregunta: "What is highest amount that the person can buy of good 2?",
+                respuesta: "25",
+                mensaje_respuesta: "m/p2 = 100/4 = 25"
+            },
+            pregunta3: {
+                identificador: "3",
+                pregunta: "What is the cost of bundle (5, 10)?",
+                respuesta: "50",
+                mensaje_respuesta: "p<sub>1</sub> x<sub>1</sub> + p<sub>2</sub> x<sub>2</sub> = 2 x 5+ 4 x 10 = 50"
+            },
+            pregunta4: {
+                identificador: "4",
+                pregunta: "Is bundle (5, 10) affordable?",
+                respuesta: "yes",
+                mensaje_respuesta: "50 < 100 Yes"
+            },
+            pregunta5: {
+                identificador: "5",
+                pregunta: "What is the cost of bundle (40, 10)?",
+                respuesta: "120",
+                mensaje_respuesta: "p<sub>1</sub> x<sub>1</sub> + p<sub>2</sub> x<sub>2</sub> = 2 x 40 + 4 x 10 = 120"
+            },
+            pregunta6: {
+                identificador: "6",
+                pregunta: "Is bundle (5, 10) affordable?",
+                respuesta: "no",
+                mensaje_respuesta: "120 > 100 No"
+            },
+            pregunta7: {
+                identificador: "7",
+                pregunta: "Suppose the person is consuming a bundle that exhausts her income. If she reduces the consumption of good 2 in one unit, how many more units can the person acquire of good 2?",
+                respuesta: "2",
+                mensaje_respuesta: "If she reduces her consumption of good 2 in one unit, she gets 4$. Since each unit of good 1 costs 2$, she can get 2 more units of good 1"
+            },
+            pregunta8: {
+                identificador: "8",
+                pregunta: "What is the slope of the budget line?",
+                respuesta: "-0.5",
+                mensaje_respuesta: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta9: {
+                identificador: "9",
+                pregunta: "What is highest amount that the person can buy of good 1?",
+                respuesta: "-0.5",
+                mensaje_respuesta: ""
+            },
+
+            pregunta10: {
+                identificador: "10",
+                pregunta: "What is highest amount than the person can buy of good 2?",
+                respuesta: "-0.5",
+                mensaje_respuesta: ""
+            },
+            pregunta11: {
+                identificador: "11",
+                pregunta: "What is the cost of bundle(5,10)?",
+                respuesta: "-0.5",
+                mensaje_respuesta: ""
+            },
+            pregunta12: {
+                identificador: "12",
+                pregunta: "Is bundle (5,10) affordable?",
+                respuesta: "-0.5",
+                mensaje_respuesta: ""
+            },
+            pregunta13: {
+                identificador: "13",
+                pregunta: "What is the cost of bundle(40,10)?",
+                respuesta: "-0.5",
+                mensaje_respuesta: ""
+            },
+            pregunta14: {
+                identificador: "14",
+                pregunta: "Is bundle (40,10) affordable?",
+                respuesta: "-0.5",
+                mensaje_respuesta: ""
+            },
+            pregunta15: {
+                identificador: "15",
+                pregunta: "Suppose the person is consuming a bundle that that exhausts her income. If she reduces the consumption of good 2 in one unit, how many more units can the person acquire of good 2?",
+                respuesta: "-0.5",
+                mensaje_respuesta: ""
+            },
+            pregunta16: {
+                identificador: "16",
+                pregunta: "What is the slope of the budget line?",
+                respuesta: "0.5",
+                mensaje_respuesta: ""
+            },
+            pregunta17: {
+                identificador: "17",
+                pregunta: "What is highest amount that the person can buy of good 1?",
+                respuesta: "-0.5",
+                mensaje_respuesta: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta18: {
+                identificador: "18",
+                pregunta: "What is highest amount that the person can buy of good 2?",
+                respuesta: "-0.5",
+                mensaje_respuesta: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta19: {
+                identificador: "19",
+                pregunta: "What is the cost of bundle (5, 10)?",
+                respuesta: "-0.5",
+                mensaje_respuesta: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta20: {
+                identificador: "20",
+                pregunta: "Is bundle (5, 10) affordable?",
+                respuesta: "-0.5",
+                mensaje_respuesta: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta21: {
+                identificador: "21",
+                pregunta: "What is the cost of bundle (40, 10)?",
+                respuesta: "-0.5",
+                mensaje_respuesta: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta22: {
+                identificador: "22",
+                pregunta: "Is bundle (40, 10) affordable?",
+                respuesta: "-0.5",
+                mensaje_respuesta: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta23: {
+                identificador: "23",
+                pregunta: "Suppose the person is consuming a bundle that that exhausts her income. If she reduces the consumption of good 2 in one unit, how many more units can the person acquire of good 2?",
+                respuesta: "-0.5",
+                mensaje_respuesta: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta24: {
+                identificador: "24",
+                pregunta: "What is the slope of the budget line",
+                respuesta: "-0.5",
+                mensaje_respuesta: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+
+
+            
+        };
+
+
+        function mostrarPreguntasRespuestas(id_name,inicio,final) {
+        
+            var container = document.createElement('div');
+            var ol = document.createElement('ol');
+            // Recorrer el objeto de preguntas y respuestas
+            for (var key in preguntasRespuestas) {
+                if (preguntasRespuestas.hasOwnProperty(key)) {
+                    var identificador = preguntasRespuestas[key].identificador;
+                    if(identificador > (final) || identificador < (inicio )){
+
+                    }
+                    else
+                    {
+                        var pregunta = preguntasRespuestas[key].pregunta;
+                        var mensaje_respuesta = preguntasRespuestas[key].mensaje_respuesta;
+                        var li = document.createElement('li');
+                        
+                        var preguntaElement = document.createElement('div');
+                        preguntaElement.textContent = pregunta;
+                        preguntaElement.id = "pregunta"+identificador ;
+                        
+                        var respuestaElement = document.createElement('div');
+                        respuestaElement.style.display = 'none';
+                        respuestaElement.innerHTML = '<span>Answer:</span> <span>' + mensaje_respuesta + '</span>';
+                        respuestaElement.id = 'mensaje_respuesta'+identificador;
+                        
+
+                        var mostrarRespuestaButton = document.createElement('input');
+                        mostrarRespuestaButton.type = 'button';
+                        mostrarRespuestaButton.value = 'Send';
+
+                        var inputElement = document.createElement('input');
+                        inputElement.type = 'text';
+                        inputElement.id = 'input'+identificador;
+                        /*
+                        mostrarRespuestaButton.addEventListener('click', function() {
+                            var response = document.getElementById('mensaje_respuesta'+identificador).children[1].textContent;
+                            //console.log(response.children[1].textContent);
+                            liveSend(response);
+                            respuestaElement.style.display = 'block';
+                        });
+                        */
+                        mostrarRespuestaButton.setAttribute('onclick', 'comparar_respuestas('+identificador+')');
+                       
+                        li.appendChild(preguntaElement);
+                        li.appendChild(document.createElement('br'));
+                        li.appendChild(inputElement);
+
+                        li.appendChild(mostrarRespuestaButton);
+                        li.appendChild(document.createElement('br'));
+                        li.appendChild(respuestaElement);
+                        li.appendChild(document.createElement('br'));
+                        
+                        ol.appendChild(li);
+                    }
+                    
+                }
+                //container.appendChild(ol);
+                id_name.appendChild(ol)
+            }
+            //document.body.appendChild(ol);
+            document.body.appendChild(container);
+        }
+        function comparar_respuestas(identificador){
+            var id_preg = "pregunta"+identificador;
+            console.log("identificador: "+identificador);
+            var mensaje_respuesta = document.getElementById('mensaje_respuesta'+identificador);
+            var respuesta_ofrecida = document.getElementById('input'+identificador).value;
+            if (preguntasRespuestas[id_preg].respuesta == respuesta_ofrecida)
+            {
+                console.log("respuesta correcta");
+                mensaje_respuesta.style.color = 'green';
+                mensaje_respuesta.style.display = 'block';
+                liveSend(preguntasRespuestas[id_preg].mensaje_respuesta);
+            }
+            else
+            {
+                console.log("respuesta incorrecta");
+                mensaje_respuesta.style.color = 'red';
+                mensaje_respuesta.style.display = 'block';
+                liveSend(preguntasRespuestas[id_preg].mensaje_respuesta);
+            }
+            
+            
+        }
+        // Llamar a la función para mostrar las preguntas y respuestas
+        
+
+        ///instanciar los cuestionarios
+        function instanciar_cuestionario(id,inicio,final){
+            var id_name = document.getElementById(id)
+            mostrarPreguntasRespuestas(id_name,inicio,final);
+        }
+        
+
+
+        instanciar_cuestionario("cuestionario1",1,8);
+        instanciar_cuestionario("cuestionario2",9,16);
+        instanciar_cuestionario("cuestionario3",17,24);
+    /*<ol>
+    <li>What is highest amount that the person can buy of good 1?
+        <br><br>
+        <div class="container">
+            <input class="input-text" type="text">
+            <input type="button" value="Botón">
+            <br><br>
+            <div style="display: none;">
+                <span>Correct answer: </span>
+                <span>m/p1 = 100/2 = 50</span>
+            </div>
+        </div>
+        <br>
+    </li>
+        
+    <li>What is highest amount that the person can buy of good 2? m/p2 100/4 25</li>
+    <li>What is the cost of bundle (5, 10)?
+        P1 X1 + P2 x2 = 2 x 5+ 4 x 10 = 50</li>
+    <li>Is bundle (5, 10) affordable?
+        50 < 100 Yes</li>
+  </ol> */
+  
+    </script>
+    <script>
+
+    </script>
+{{ endblock }}

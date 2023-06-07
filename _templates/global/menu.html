@@ -1,0 +1,77 @@
+<style>
+  .menu .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .menu .subtitle {
+    font-weight: bold;
+    margin-bottom: 4px;
+    margin-left: 24px;
+  }
+  .menu .subsubtitle {
+    font-weight: ;
+    margin-bottom: 4px;
+    margin-left: 48px;
+  }
+  .menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    width: 240px;
+    height: 100%;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333333;
+    z-index: 9999;
+  }
+
+  .menu a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333333;
+    transition: background-color 0.3s;
+  }
+
+  .menu a:hover {
+    background-color: #f1f1f1;
+  }
+</style>
+<div class="menu" id="menu" onmouseover="showMenu()" onmouseout="hideMenu()">
+  <a class="title" href="#the_budget_set">The budget set</a>
+  <a class="subtitle" href="#budget_line">Budget Line</a>
+  <a class="subsubtitle" href="#static_questions"> <b>- </b>Practice Questions:</a>
+  <a class="subsubtitle" href="#interactive_questions"> <b>- </b>Interactive Questions:</a>
+</div>
+<script>
+  function showMenu() {
+    var menu = document.getElementById("menu");
+    menu.style.display = "block";
+  }
+function hideMenu() {
+var menu = document.getElementById("menu");
+menu.style.display = "none";
+}
+
+window.addEventListener("mousemove", function(event) {
+var mouseX = event.clientX;
+if (mouseX <= 240) {
+showMenu();
+} else {
+hideMenu();
+}
+});
+
+function menuIsVisible() {
+var menu = document.getElementById("menu");
+var rect = menu.getBoundingClientRect();
+var menuLeft = rect.left;
+var menuWidth = rect.width;
+return menuLeft + menuWidth >= 0;
+}
+</script>

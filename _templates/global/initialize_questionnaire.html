@@ -1,0 +1,212 @@
+<script>
+        function enviar_al_server()
+        {  
+            console.log("enviar");
+            liveSend(99);
+        }
+
+        function liveRecv(data){
+            console.log(data);
+        }
+
+        function mostrarPreguntasRespuestas(id_div_contenedor,inicio,final, tipo_de_cuestionario) {
+            var contenedor = document.getElementById(id_div_contenedor)
+            var container = document.createElement('div');
+            var ol = document.createElement('ol');
+            // Recorrer el objeto de preguntas y respuestas
+            if(tipo_de_cuestionario == "estatico"){
+              var cuestionario = preguntasRespuestas;
+              var identificador_pregunta = "pregunta_estatico_";
+              var identificador_mensaje_al_responder = "mensaje_al_responder_estatico_";
+              var identificador_input = "input_estatico_";
+            }
+            else 
+            {
+              var cuestionario = preguntasRespuestasInteractivas;
+              var identificador_pregunta = "pregunta_interactivo_";
+              var identificador_mensaje_al_responder = "mensaje_al_responder_interactivo_";
+              var identificador_input = "input_interactivo_";
+            }
+            
+            for (var key in cuestionario) {
+                if (cuestionario.hasOwnProperty(key)) {
+                    var identificador = cuestionario[key].identificador;
+                    if(identificador > (final) || identificador < (inicio )){}
+                    else
+                    {   // crear elementos div, para pregunta, input de respuesta, el mensaje de la respuesta y el boton enviar respuesta
+                        var li = document.createElement('li');
+                        var texto_pregunta = cuestionario[key].pregunta;
+                        var mensaje_al_responder = cuestionario[key].mensaje_al_responder;
+                        //div para la pregunta
+                        var preguntaElement = document.createElement('div');
+                        preguntaElement.textContent = texto_pregunta;
+                        preguntaElement.id = identificador_pregunta +identificador ;
+                        // div para el mensaje al responder
+                        var respuestaElement = document.createElement('div');
+                        respuestaElement.style.display = 'none';
+                        respuestaElement.innerHTML = '<span>Answer:</span> <span>' + mensaje_al_responder + '</span>';
+                        respuestaElement.id = identificador_mensaje_al_responder +identificador;
+                        //boton para responder
+                        var mostrarRespuestaButton = document.createElement('input');
+                        mostrarRespuestaButton.type = 'button';
+                        mostrarRespuestaButton.value = 'Send';
+                        mostrarRespuestaButton.setAttribute('onclick', 'comparar_respuestas("' + id_div_contenedor + '",'+identificador+','+ JSON.stringify(cuestionario) +',"'+tipo_de_cuestionario+'")');
+                        // input donde se ingresa la respuesta
+                        var inputElement = document.createElement('input');
+                        inputElement.type = 'text';
+                        inputElement.id = identificador_input +identificador;
+                        
+                        li.appendChild(preguntaElement);
+                        li.appendChild(document.createElement('br'));
+                        li.appendChild(inputElement);
+
+                        li.appendChild(mostrarRespuestaButton);
+                        li.appendChild(document.createElement('br'));
+                        li.appendChild(respuestaElement);
+                        li.appendChild(document.createElement('br'));
+                        
+                        ol.appendChild(li);
+                    }
+                }
+                //container.appendChild(ol);
+                contenedor.appendChild(ol)
+            }
+            //document.body.appendChild(ol);
+            document.body.appendChild(container);
+        }
+        function comparar_respuestas(id_div_contenedor,identificador,cuestionario,tipo_de_cuestionario){
+            var id_preg = "pregunta" +identificador;
+            //console.log("identificador: "+identificador);
+            var mensaje_al_responder = document.getElementById('mensaje_al_responder_'+tipo_de_cuestionario+"_"+identificador);
+            
+            var respuesta_ofrecida = document.getElementById('input_'+tipo_de_cuestionario+'_'+identificador).value;
+            if (tipo_de_cuestionario == "estatico")
+            {
+              if (cuestionario[id_preg].respuesta == respuesta_ofrecida)
+              {
+                  console.log("respuesta correcta");
+                  mensaje_al_responder.style.color = 'green';
+                  mensaje_al_responder.style.display = 'block';
+                  liveSend(cuestionario[id_preg].mensaje_al_responder);
+              }
+              else
+              {
+                  console.log("respuesta incorrecta");
+                  mensaje_al_responder.style.color = 'red';
+                  mensaje_al_responder.style.display = 'block';
+                  liveSend(cuestionario[id_preg].mensaje_al_responder);
+              }
+            }
+            else if(tipo_de_cuestionario == "interactivo")
+            { 
+              var variables = cuestionario[id_preg].variables
+              var variables_separadas_en_lista = variables.split(",");
+              var cadena_de_variables = "";
+              for (var i = 0; i < variables_separadas_en_lista.length; i++) {
+                var variable_valor = document.getElementById("variables_" + id_div_contenedor + variables_separadas_en_lista[i] + "-input");
+                cadena_de_variables = cadena_de_variables + variables_separadas_en_lista[i] + "="+variable_valor.value+",";
+              }
+              cadena_de_variables = cadena_de_variables.slice(0,-1)
+              //alert(cadena_de_variables)
+              var ecuacion = cuestionario[id_preg].ecuacion
+              //alert(ecuacion)
+              var resultado = calculate(cadena_de_variables,ecuacion)
+              //alert(parseFloat(respuesta_ofrecida))
+              if (respuesta_ofrecida == resultado)
+              {   
+                  
+                  console.log("respuesta correcta");
+                  mensaje_al_responder.innerHTML = "Answer: " + cuestionario[id_preg].mensaje_al_responder + resultado;
+                  mensaje_al_responder.style.color = 'green';
+                  mensaje_al_responder.style.display = 'block';
+                  liveSend(cuestionario[id_preg].mensaje_al_responder);
+              }
+              else
+              {
+                console.log("respuesta incorrecta");
+                  mensaje_al_responder.innerHTML = "Answer: " + cuestionario[id_preg].mensaje_al_responder + resultado;
+                  mensaje_al_responder.style.color = 'red';
+                  mensaje_al_responder.style.display = 'block';
+                  liveSend(cuestionario[id_preg].mensaje_al_responder);
+              }
+            }        
+        }
+        //Llamar a la función para mostrar las preguntas y respuestas
+
+  
+  function calculate(variables,operations) {
+      var variables = parseVariables(variables);
+      var result = evaluateExpression(variables,operations);
+      return result
+    }
+  function parseVariables(variablesInput) {
+    var variableList = variablesInput.split(',');
+    var variables = {};
+    for (var i = 0; i < variableList.length; i++) {
+      var variable = variableList[i].split('=');
+      variables[variable[0].trim()] = parseFloat(variable[1].trim());
+    }
+    return variables;
+  }
+  function evaluateExpression(variables,expression) {
+    var result = eval(expression.replace(/[a-zA-Z_][a-zA-Z0-9_]*/g, function (match) {
+      return variables[match] || 0;
+    }));
+    return result;
+  }
+
+  function generarVariablesCuestionarioInteractivo(idDiv, variables) {
+          var div = document.getElementById(idDiv);
+
+          variables.forEach(function(variable) {
+          var parts = variable.split(",");
+          var variableName = parts[0];
+          var initialValue = parts[1];
+
+          var label = document.createElement("label");
+          label.setAttribute("for", idDiv + variableName + "-input");
+          label.textContent = variableName + ":";
+
+          var valueContainer = document.createElement("div");
+
+          var decrementButton = document.createElement("input");
+          decrementButton.setAttribute("type", "button");
+          decrementButton.setAttribute("value", "-");
+          decrementButton.setAttribute("onclick", "decrement('" + idDiv + variableName + "-input')");
+
+          var input = document.createElement("input");
+          input.setAttribute("type", "text");
+          input.setAttribute("id", idDiv + variableName + "-input");
+          input.setAttribute("value", initialValue);
+
+          var incrementButton = document.createElement("input");
+          incrementButton.setAttribute("type", "button");
+          incrementButton.setAttribute("value", "+");
+          incrementButton.setAttribute("onclick", "increment('" + idDiv + variableName + "-input')");
+
+          valueContainer.appendChild(decrementButton);
+          valueContainer.appendChild(input);
+          valueContainer.appendChild(incrementButton);
+
+          div.appendChild(label);
+          div.appendChild(valueContainer);
+        });
+        return div.outerHTML;
+  }
+
+  // funciones para incrementar o decrementar el valor de las variables
+  function increment(inputId) {
+    const input = document.getElementById(inputId);
+    let value = parseFloat(input.value);
+    value++;
+    input.value = value;
+  }
+
+  function decrement(inputId) {
+    const input = document.getElementById(inputId);
+    let value = parseFloat(input.value);
+    value--;
+    input.value = value;
+  }
+      
+</script>

@@ -1,0 +1,151 @@
+<script>
+
+    //preguntas y respuestas
+    var preguntasRespuestas = {
+            pregunta1: {
+                identificador: "1",
+                pregunta: "What is highest amount that the person can buy of good 1?",
+                respuesta: "50",
+                mensaje_al_responder: "m/p1 = 100/2 = 50"
+            },
+            pregunta2: {
+                identificador: "2",
+                pregunta: "What is highest amount that the person can buy of good 2?",
+                respuesta: "25",
+                mensaje_al_responder: "m/p2 = 100/4 = 25"
+            },
+            pregunta3: {
+                identificador: "3",
+                pregunta: "What is the cost of bundle (5, 10)?",
+                respuesta: "50",
+                mensaje_al_responder: "p<sub>1</sub> x<sub>1</sub> + p<sub>2</sub> x<sub>2</sub> = 2 x 5+ 4 x 10 = 50"
+            },
+            pregunta4: {
+                identificador: "4",
+                pregunta: "Is bundle (5, 10) affordable?",
+                respuesta: "yes",
+                mensaje_al_responder: "50 < 100 Yes"
+            },
+            pregunta5: {
+                identificador: "5",
+                pregunta: "What is the cost of bundle (40, 10)?",
+                respuesta: "120",
+                mensaje_al_responder: "p<sub>1</sub> x<sub>1</sub> + p<sub>2</sub> x<sub>2</sub> = 2 x 40 + 4 x 10 = 120"
+            },
+            pregunta6: {
+                identificador: "6",
+                pregunta: "Is bundle (40, 10) affordable?",
+                respuesta: "no",
+                mensaje_al_responder: "120 > 100 No"
+            },
+            pregunta7: {
+                identificador: "7",
+                pregunta: "Suppose the person is consuming a bundle that exhausts her income. If the person increases the consumption of good 1 in one unit, how many units of good 2 will she need to give up?",
+                respuesta: "1/2",
+                mensaje_al_responder: "If she increases her consumption of good 1 in one unit, she needs to pay 2$. Since each unit of good 2 costs 4$, she will need to reduce her consumption of good 2 in 1/2 unit."
+            },
+            pregunta8: {
+                identificador: "8",
+                pregunta: "What is the slope of the budget line?",
+                respuesta: "-1/2",
+                mensaje_al_responder: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta9: {
+                identificador: "9",
+                pregunta: "What is highest amount that the person can buy of good 1?",
+                respuesta: "-0.5",
+                mensaje_al_responder: ""
+            },
+
+            pregunta10: {
+                identificador: "10",
+                pregunta: "What is highest amount than the person can buy of good 2?",
+                respuesta: "-0.5",
+                mensaje_al_responder: ""
+            },
+            pregunta11: {
+                identificador: "11",
+                pregunta: "What is the cost of bundle(5,10)?",
+                respuesta: "-0.5",
+                mensaje_al_responder: ""
+            },
+            pregunta12: {
+                identificador: "12",
+                pregunta: "Is bundle (5,10) affordable?",
+                respuesta: "-0.5",
+                mensaje_al_responder: ""
+            },
+            pregunta13: {
+                identificador: "13",
+                pregunta: "What is the cost of bundle(40,10)?",
+                respuesta: "-0.5",
+                mensaje_al_responder: ""
+            },
+            pregunta14: {
+                identificador: "14",
+                pregunta: "Is bundle (40,10) affordable?",
+                respuesta: "-0.5",
+                mensaje_al_responder: ""
+            },
+            pregunta15: {
+                identificador: "15",
+                pregunta: "Suppose the person is consuming a bundle that that exhausts her income. If she reduces the consumption of good 2 in one unit, how many more units can the person acquire of good 2?",
+                respuesta: "-0.5",
+                mensaje_al_responder: ""
+            },
+            pregunta16: {
+                identificador: "16",
+                pregunta: "What is the slope of the budget line?",
+                respuesta: "0.5",
+                mensaje_al_responder: ""
+            },
+            pregunta17: {
+                identificador: "17",
+                pregunta: "What is highest amount that the person can buy of good 1?",
+                respuesta: "-0.5",
+                mensaje_al_responder: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta18: {
+                identificador: "18",
+                pregunta: "What is highest amount that the person can buy of good 2?",
+                respuesta: "-0.5",
+                mensaje_al_responder: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta19: {
+                identificador: "19",
+                pregunta: "What is the cost of bundle (5, 10)?",
+                respuesta: "-0.5",
+                mensaje_al_responder: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta20: {
+                identificador: "20",
+                pregunta: "Is bundle (5, 10) affordable?",
+                respuesta: "-0.5",
+                mensaje_al_responder: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta21: {
+                identificador: "21",
+                pregunta: "What is the cost of bundle (40, 10)?",
+                respuesta: "-0.5",
+                mensaje_al_responder: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta22: {
+                identificador: "22",
+                pregunta: "Is bundle (40, 10) affordable?",
+                respuesta: "-0.5",
+                mensaje_al_responder: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta23: {
+                identificador: "23",
+                pregunta: "Suppose the person is consuming a bundle that that exhausts her income. If she reduces the consumption of good 2 in one unit, how many more units can the person acquire of good 2?",
+                respuesta: "-0.5",
+                mensaje_al_responder: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },
+            pregunta24: {
+                identificador: "24",
+                pregunta: "What is the slope of the budget line",
+                respuesta: "-0.5",
+                mensaje_al_responder: "Slope of budget line = - p1/p2 = -2/4 = -1/2"
+            },  
+        };
+</script>

@@ -1,0 +1,20 @@
+2023-06-07 23:24:14 circus[281448] [INFO] Got signal SIG_TERM
+2023-06-07 23:24:14 circus[281448] [INFO] Arbiter exiting
+2023-06-07 23:24:14 circus[281448] [INFO] webapp stopped
+2023-06-07 23:25:27 circus[282343] [INFO] Installing handle_callback_exception to loop
+2023-06-07 23:25:27 circus[282343] [INFO] Registering signals...
+2023-06-07 23:25:27 circus[282343] [INFO] Starting master on pid 282343
+2023-06-07 23:25:27 circus[282343] [INFO] Arbiter now waiting for commands
+2023-06-07 23:25:27 circus[282343] [INFO] webapp started
+2023-06-07 23:25:59 circus[282343] [INFO] webapp stopped
+2023-06-07 23:26:09 circus[282343] [INFO] webapp started
+2023-06-07 23:27:24 circus[282343] [INFO] webapp stopped
+2023-06-07 23:27:29 circus[282343] [INFO] webapp started
+2023-06-07 23:27:59 circus[282343] [INFO] webapp stopped
+2023-06-07 23:28:02 circus[282343] [INFO] webapp started
+2023-06-07 23:28:16 circus[282343] [INFO] Arbiter exiting
+2023-06-07 23:28:16 circus[282343] [INFO] webapp stopped
+2023-06-07 23:28:16 circus[282343] [INFO] Registering signals...
+2023-06-07 23:28:16 circus[282343] [INFO] Starting master on pid 282343
+2023-06-07 23:28:16 circus[282343] [INFO] Arbiter now waiting for commands
+2023-06-07 23:28:16 circus[282343] [INFO] webapp started

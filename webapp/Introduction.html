@@ -69,37 +69,33 @@ Now you can change the price and income parameters to solve the same questions w
   <div id="cuestionario_interactivo_1"></div>
 
 </div>
-
+<br><br>
+<div class="cuadro" id="taxes">
+<b>Taxes</b>
   <br><br>
-Let us study how different taxes affect the budget set. We will study two types of taxes: sale tax and income tax. These taxes affect different parts of the budget line and, consequently, the budget set.
+Let us study how different taxes affect the budget set. 
 <br><br>
-The sale tax is a per-unit tax imposed on the consumption of either good 1 or good 2. For example, if a per-unit tax of t dollars is imposed on good 1, then the consumer pays
+We will study two types of taxes: sale tax and income tax. 
 <br><br>
-t + p<sub>i</sub>
+These taxes affect different parts of the budget line and, consequently, the budget set.
+<br><br>
+The sale tax is a per-unit tax imposed on the consumption of either good 1 or good 2. For example, if a per-unit tax of t dollars is imposed on good 1, then the consumer will need to pay
+<br><br>
+<div id="equation3" style="text-align: center;"></div>
 <br><br>
 per unit of good 1 that she acquires. After the tax the budget set is
 <br><br>
-(p <sub>1</sub> + t) x  <sub>1</sub> + p <sub>2</sub>  x <sub>2</sub>  ≤ m.
+<div id="equation4" style="text-align: center;"></div>
+
 <br><br>
 The next picture illustrates the budget restriction after the sale tax.
 <br><br>
 PICTURE.
 <br><br>
-The income tax is an amount of money that the consumer has to give to the government. For example, if an income tax T is introduced, the effective income of the person reduces to
+</div>
 <br><br>
-m-T
-<br><br>
-After the tax the budget set is
-<br><br>
-p <sub>1</sub> x <sub>1</sub> + p <sub>1</sub> x <sub>2</sub> ≤ m - T.
-<br><br>
-The next picture illustrates the budget restriction after the income tax.
-<br><br>
-PICTURE.
-<br><br>
-
-
-Questions:
+<div class="cuadro">
+<b id="questions_tax">Questions </b>
 <br><br>
 Let p <sub>1</sub> = 2, p <sub>2</sub> = 4, and m = 100. The government introduces a sale tax of t = 1 dollar on good 2.
 <br><br>
@@ -107,6 +103,31 @@ Let p <sub>1</sub> = 2, p <sub>2</sub> = 4, and m = 100. The government introduc
 Also PICTURE for Answers!
 <br><br>
 <div id="cuestionario_estatico_2"></div>
+</div>
+
+<br><br>
+<div class="cuadro" id = "income_tax"> 
+<b>Income Tax</b>
+<br><br>
+
+
+The income tax is an amount of money that the consumer gives to the government. If an income tax T is introduced, then the effective income of the person reduces to
+<br><br>
+<div id="equation5" style="text-align: center;"></div>
+<br><br>
+After the tax the budget set is
+<br><br>
+<div id="equation6" style="text-align: center;"></div>
+<br><br>
+The next picture illustrates the budget restriction after the income tax.
+<br><br>
+PICTURE.
+<br><br>
+
+</div>
+
+
+
 <!--
 1. What is highest amount that the person can buy of good 1?
 2. What is highest amount than the person can buy of good 2?
@@ -159,8 +180,8 @@ Also PICTURE for Answers!
             mostrarPreguntasRespuestas(id_div_contenedor,inicio,final,"interactivo");
         }
         instanciar_cuestionario_estatico("cuestionario_estatico_1",1,8);
-        instanciar_cuestionario_estatico("cuestionario_estatico_2",9,16);
-        instanciar_cuestionario_estatico("cuestionario_estatico_3",17,24);
+        instanciar_cuestionario_estatico("cuestionario_estatico_2",9,17);
+        instanciar_cuestionario_estatico("cuestionario_estatico_3",18,24);
         instanciar_cuestionario_interactivo("cuestionario_interactivo_1",1,8);
     </script>
     
@@ -171,6 +192,15 @@ Also PICTURE for Answers!
         equation1.innerHTML = katex.renderToString("p_{1} x_{1} + p_{2} x_{2} ≤ m");
         const equation2 = document.getElementById("equation2")
         equation2.innerHTML = katex.renderToString("p_{1} x_{1} + p_{2} x_{2} = m");
+        const equation3 = document.getElementById("equation3")
+        equation3.innerHTML = katex.renderToString("t + p_{i}");
+        const equation4 = document.getElementById("equation4");
+        equation4.innerHTML = katex.renderToString("(p_{1} + t) x_{1} + p_{2} x_{2} ≤ m");
+        const equation5 = document.getElementById("equation5");
+        equation5.innerHTML = katex.renderToString("m -T");
+        const equation6 = document.getElementById("equation6")
+        equation6.innerHTML = katex.renderToString("p_{1} x_{1} + p_{2} x_{2} ≤ m - T");
+
         const spantext1 = document.getElementById("spantext1")
         spantext1.innerHTML = katex.renderToString("(x_{1}, x_{2})");
         const spantext2 = document.getElementById("spantext2")

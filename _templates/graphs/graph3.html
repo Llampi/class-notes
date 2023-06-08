@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello World</title>
+    <link href="https://kineticgraphs.org/css/kg.0.2.6.css" rel="stylesheet" type="text/css">
+    <script src="https://kineticgraphs.org/js/kg.0.2.6.js"></script>
+</head>
+<body>
+
+
+
+
+<div class="kg-container">
+schema: EconSchema
+version: 1
+aspectRatio: 2
+params:
+- name: x1
+  value: 2
+  min: 0
+  max: 10
+- name: x2
+  value: 4
+  min: 0
+  max: 10
+- name: p1
+  value: 4
+  min: 2
+  max: 12
+  round: 0.01
+- name: p2
+  value: 2
+  min: 2
+  max: 12
+  round: 0.01
+- name: m
+  value: 20
+  min: 0
+  max: 40
+  round: 1
+- name: t
+  value: 0
+  min: 0
+  max: 10
+  round: 1
+- name: T
+  value: 4
+  min: 0
+  max: 10
+  round: 1
+layout:
+  type: OneGraphPlusSidebar
+  def:
+    graph:
+      xAxis:
+        title: Coffee (Good 1)
+        max: 12
+      yAxis:
+        title: Orange Juice (Good 2)
+        max: 12
+      objects:
+      - EconBudgetLine:
+          p1: "(params.p1 + params.t)"
+          p2: params.p2
+          m: "(params.m - params.T)"
+          label: BL
+          draggable: true
+          handles: false
+          set: true
+      - EconBudgetLine:
+          p1: params.p1
+          p2: params.p2
+          m: params.m
+          label: BL
+          draggable: true
+          handles: true
+          
+      - Point:
+          coordinates:
+          - params.x1
+          - params.x2
+          label:
+            text: "`x = (${params.x1.toFixed(0)}, ${params.x2.toFixed(0)})`"
+          color: "params.x1 * (params.p1 + params.t) + params.x2 * params.p2 > params.m - params.T ? 'red' : 'green'"
+          drag:
+          - horizontal: x1
+          - vertical: x2
+          droplines:
+            horizontal: params.x2.toFixed(0)
+            vertical: params.x1.toFixed(0)
+      - Point:
+          coordinates:
+          - params.m/params.p1
+          - 0
+          color: green
+          label:
+            text: m/p1
+      - Point:
+          coordinates:
+          - 0
+          - params.m/params.p2
+          color: green
+          label:
+            text: m/p2
+      - Point:
+          coordinates:
+          - (params.m-params.T)/(params.p1)
+          - 0
+          color: green
+          label:
+            text: (m-T)/p1
+            position: br
+      - Point:
+          coordinates:
+          - 0
+          - (params.m-params.T)/params.p2
+          color: green
+          label:
+            text: (m-T)/p2
+            position: tl
+    sidebar:
+      controls:
+      - title: The Budget Set
+        description: "`The bundle (${params.x1.toFixed(0)},${params.x2.toFixed(0)}) with T = ${params.T}  
+          costs \\$${(params.x1*(params.p1) + params.x2*params.p2).toFixed(2)}, so it
+          is ${(params.x1*(params.p1+params.t) + params.x2*params.p2 > params.m - params.T) ? 'not affordable'
+          : 'affordable'} with (m -T) = \\$${params.m.toFixed(0) - params.T}; that is, it lies
+          ${(params.x1*(params.p1+params.t) + params.x2*params.p2 > params.m) ? 'outside' : 'within'}
+          the budget set (shaded).`"
+        sliders:
+        - param: p1
+          label: p_1
+        - param: p2
+          label: p_2
+        - param: m
+          label: m
+        - param: T
+          label: T
+        divs:
+          - html: "`$p_1x_1 + p_2x_2 = $ <br> $ ${params.p1.toFixed(2)} \\\\times ${params.x1.toFixed(0)} + ${params.p2.toFixed(2)} \\\\times ${params.x2.toFixed(0)} = ${(params.x1*(params.p1+params.t) + params.x2*params.p2).toFixed(2)}$`"
+          - html: "` And <br> $m - T = ${params.m.toFixed(0)} - ${params.T.toFixed(0)} = ${(params.m - params.T).toFixed(0)}$`"
+</div>
+
+
+
+</body>
+</html>

@@ -11,7 +11,7 @@
 
 
 
-<div class="kg-container" >
+<div class="kg-container">
 schema: EconSchema
 version: 1
 aspectRatio: 2
@@ -39,6 +39,11 @@ params:
   min: 0
   max: 40
   round: 1
+- name: t
+  value: 2
+  min: 0
+  max: 10
+  round: 1
 layout:
   type: OneGraphPlusSidebar
   def:
@@ -47,9 +52,17 @@ layout:
         title: Coffee (Good 1)
         max: 12
       yAxis:
-        title: Orange Juice  (Good 2)
+        title: Orange Juice (Good 2)
         max: 12
       objects:
+      - EconBudgetLine:
+          p1: "params.p1 + params.t"
+          p2: params.p2
+          m: params.m
+          label: BL
+          draggable: true
+          handles: false
+          set: true
       - EconBudgetLine:
           p1: params.p1
           p2: params.p2
@@ -57,15 +70,14 @@ layout:
           label: BL
           draggable: true
           handles: true
-          set: true
+          set: false
       - Point:
           coordinates:
           - params.x1
           - params.x2
           label:
             text: "`x = (${params.x1.toFixed(0)}, ${params.x2.toFixed(0)})`"
-          color: 'params.x1*params.p1 + params.x2*params.p2 > params.m ? ''red'' :
-            ''green'''
+          color: "params.x1 * (params.p1 + params.t) + params.x2 * params.p2 > params.m ? 'red' : 'green'"
           drag:
           - horizontal: x1
           - vertical: x2
@@ -86,14 +98,22 @@ layout:
           color: green
           label:
             text: m/p2
+      - Point:
+          coordinates:
+          - params.m/(params.p1 + params.t)
+          - 0
+          color: green
+          label:
+            text: m/(p1 + t)
+            position: br
     sidebar:
       controls:
       - title: The Budget Set
-        description: "`The bundle (${params.x1.toFixed(0)},${params.x2.toFixed(0)})
-          costs \\$${(params.x1*params.p1 + params.x2*params.p2).toFixed(2)}, so it
-          is ${(params.x1*params.p1 + params.x2*params.p2 > params.m) ? 'not affordable'
+        description: "`The bundle (${params.x1.toFixed(0)},${params.x2.toFixed(0)}) with tax of ${params.t} for good 1 
+          costs \\$${(params.x1*(params.p1+params.t) + params.x2*params.p2).toFixed(2)}, so it
+          is ${(params.x1*(params.p1+params.t) + params.x2*params.p2 > params.m) ? 'not affordable'
           : 'affordable'} with \\$${params.m.toFixed(0)}; that is, it lies
-          ${(params.x1*params.p1 + params.x2*params.p2 > params.m) ? 'outside' : 'within'}
+          ${(params.x1*(params.p1+params.t) + params.x2*params.p2 > params.m) ? 'outside' : 'within'}
           the budget set (shaded).`"
         sliders:
         - param: p1
@@ -102,9 +122,12 @@ layout:
           label: p_2
         - param: m
           label: m
+        - param: t
+          label: t
         divs:
-          - html: "`$p_1x_1 + p_2x_2 =$ <br> $ ${params.p1.toFixed(2)} \\\\times ${params.x1.toFixed(0)} + ${params.p2.toFixed(2)} \\\\times ${params.x2.toFixed(0)} = ${(params.x1*params.p1 + params.x2*params.p2).toFixed(2)}$`"
+          - html: "`$(p_1 + t)x_1 + p_2x_2 = $ <br> $(${params.p1.toFixed(2)}+${params.t}) \\\\times ${params.x1.toFixed(0)} + ${params.p2.toFixed(2)} \\\\times ${params.x2.toFixed(0)} = ${(params.x1*(params.p1+params.t) + params.x2*params.p2).toFixed(2)}$`"
 </div>
+
 
 
 </body>

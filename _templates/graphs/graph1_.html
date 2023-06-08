@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello World</title>
+    <link href="https://kineticgraphs.org/css/kg.0.2.6.css" rel="stylesheet" type="text/css">
+    <script src="https://kineticgraphs.org/js/kg.0.2.6.js"></script>
+</head>
+<body>
+
+
+
+
+<div class="kg-container" >
+  params:
+  - {name: m, value: 1, min: -1, max: 1, round: 0.01}
+  - {name: a_x, value: 0, min: 0, max: 12, round: 1}
+  - {name: a_y, value: 12, min: 0, max: 12, round: 1}
+  - {name: b_x, value: 6, min: 0, max: 12, round: 1}
+  - {name: b_y, value: 0, min: 0, max: 12, round: 1}
+  - {name: x_x, value: 2, min: 0, max: 10, round: 1}
+  - {name: x_y, value: 4, min: 0, max: 10, round: 1}
+
+  layout:
+    
+    OneGraphPlusSidebar:
+      graph: 
+        xAxis:
+          title: Bananas $(Good 2)$
+          min: 0
+          max: 12
+          ticks: 10
+        yAxis:
+          title: Apples $(Good1)$
+          min: 0
+          max: 12
+          ticks: 10
+        objects:
+        - Line:
+            point: [params.a_x,params.a_y]
+            point2: [params.b_x,params.b_y]
+        - Line:
+            lineStyle: dotted
+            point: [0,params.x_y]
+            point2: [params.x_x,params.x_y]
+            min: 0
+            max: params.x_x
+        - Line:
+            lineStyle: dotted
+            point: [params.x_x,0]
+            point2: [params.x_x,params.x_y]
+            min: 0
+            max: params.x_y
+        - Point:
+            coordinates: [params.a_x,params.a_y]
+            drag: 
+              - directions: y
+                param: a_y
+                expression: "drag.y"
+        - Point:
+            coordinates: [params.b_x,params.b_y]
+            drag:
+              - directions: x
+                param: b_x
+                expression: "drag.x"
+        - Point:
+            coordinates: [params.x_x,params.x_y]
+            drag: 
+            - horizontal: x_x
+            - vertical: x_y
+            label:
+                text: X
+      sidebar:
+        controls:
+        - title: THE BUDGET SET
+          description: The bundle (2,4) costs $16.00, so it is affordable with $24; that is, it lies within the budget set (shaded).
+          divs:
+          - html: "$x_x$ $m$"
+          sliders:
+          - {param: a_y, label: a_Y}
+          - {param: b_x, label: b_x}
+          
+</div>
+
+
+</body>
+</html>

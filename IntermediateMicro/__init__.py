@@ -8,7 +8,7 @@ this is a course
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'webapp'
+    NAME_IN_URL = 'IntermediateMicro'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
     
@@ -41,7 +41,7 @@ def set_payoffs(group: Group):
 
 
 # PAGES
-class Introduction(Page):
+class Budget_restriction(Page):
     @staticmethod
     def live_method(player, data):
         print("data: ",data)
@@ -72,4 +72,4 @@ class Results(Page):
     pass
 
 
-page_sequence = [Introduction, Results]
+page_sequence = [Budget_restriction, Results]
